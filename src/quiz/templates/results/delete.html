@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Удаление результата
+{% endblock %}
+
+{% block header %}
+
+Do you really want to delete "{{ result.exam.title }}" exam
+from {{ result.create_timestamp|date:'d-m-y / H:m' }} ?
+
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        <center><input class="btn btn-outline-success" type="submit" value="Agree">
+        <a class="btn btn-outline-danger" href="{% url 'quizzes:details' result.exam.uuid %}">Cancel</a></center>
+    </form>
+</div>
+{% endblock %}
